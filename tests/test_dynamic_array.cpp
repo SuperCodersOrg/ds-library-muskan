@@ -515,4 +515,72 @@ int main() {
 //     }
 // }
 // // Expected: remaining elements cleaned, no leak
+
+
+
+// ===== Edge Case / Stress Tests =====
+
+// Test 1: append many elements (multiple regrows)
+DynamicArray<int> arr20;
+for(int i=1;i<=100;i++){
+    arr20.append(i);
+}
+std::cout << arr20.getSize() << " " << arr20.getCapacity() << std::endl;
+
+// Expected: 100 (capacity should be >=100)
+
+
+// Test 2: remove all elements
+DynamicArray<int> arr21;
+for(int i=1;i<=10;i++){
+    arr21.append(i);
+}
+for(int i=0;i<10;i++){
+    arr21.remove(0);
+}
+std::cout << arr21.getSize() << " " << arr21.getCapacity() << std::endl;
+
+// Expected: 0 0
+
+
+// Test 3: insert repeatedly at front
+DynamicArray<int> arr22;
+for(int i=1;i<=5;i++){
+    arr22.insert(0, i);
+}
+for(int i=0;i<arr22.getSize();i++){
+    std::cout << arr22.get(i) << " ";
+}
+std::cout << std::endl;
+
+// Expected: 5 4 3 2 1
+
+
+// Test 4: alternate append/remove
+DynamicArray<int> arr23;
+arr23.append(10);
+arr23.remove(0);
+arr23.append(20);
+arr23.append(30);
+arr23.remove(1);
+
+std::cout << arr23.get(0) << " " << arr23.getSize() << std::endl;
+
+// Expected: 20 1
+
+
+// Test 5: copy + assignment chain
+DynamicArray<int> arr24;
+arr24.append(1);
+arr24.append(2);
+
+DynamicArray<int> arr25(arr24);
+DynamicArray<int> arr26;
+arr26 = arr25;
+
+arr24.remove(0);
+
+std::cout << arr25.get(0) << " " << arr26.get(0) << std::endl;
+
+// Expected: 1 1
 }
