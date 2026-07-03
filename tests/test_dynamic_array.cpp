@@ -2,31 +2,33 @@
 #include <string>
 #include "../include/DynamicArray/DynamicArray.h"
 using namespace std;
-int main()
-{
-  try
-  {
-    // Test 1: Default constructor (positive)
+
+int main() {
+    // Test 1
     DynamicArray<int> arr1;
-    std::cout << arr1.getSize() << " " << arr1.getCapacity() << std::endl;
+    cout << arr1.getSize() << " " << arr1.getCapacity() << endl;
 
-    // Test 2: Valid capacity (positive)
+    // Test 2
     DynamicArray<int> arr2(5);
-    std::cout << arr2.getSize() << " " << arr2.getCapacity() << std::endl;
+    cout << arr2.getSize() << " " << arr2.getCapacity() << endl;
 
-    // Test 3: Large valid capacity (positive)
+    // Test 3
     DynamicArray<int> arr3(100);
-    std::cout << arr3.getSize() << " " << arr3.getCapacity() << std::endl;
+    cout << arr3.getSize() << " " << arr3.getCapacity() << endl;
 
-    // Test 4: Zero capacity (negative)
-    DynamicArray<int> arr4(0);
+    // Test 4
+    try {
+        DynamicArray<int> arr4(0);
+    } catch(const exception& e) {
+        cout << "Error: " << e.what() << endl;
+    }
 
-    // Test 5: Negative capacity (negative)
-    DynamicArray<int> arr5(-10);
-  }
-  catch (const std::exception &e)
-  {
-    std::cout << "Error: " << e.what() << std::endl;
-  }
-  return 0;
+    // Test 5
+    try {
+        DynamicArray<int> arr5(-10);
+    } catch(const exception& e) {
+        cout << "Error: " << e.what() << endl;
+    }
+
+    return 0;
 }
