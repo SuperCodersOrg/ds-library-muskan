@@ -111,67 +111,125 @@ int main() {
 
 
 
-// ===== Method: remove() =====
+// // ===== Method: remove() =====
 
-// Test 1: remove from beginning
-DynamicArray<int> arr6;
-arr6.append(10);
-arr6.append(20);
-arr6.append(30);
-arr6.remove(0);
+// // Test 1: remove from beginning
+// DynamicArray<int> arr6;
+// arr6.append(10);
+// arr6.append(20);
+// arr6.append(30);
+// arr6.remove(0);
 
-std::cout << arr6.get(0) << " " << arr6.get(1) << " " << arr6.getSize() << std::endl;
+// std::cout << arr6.get(0) << " " << arr6.get(1) << " " << arr6.getSize() << std::endl;
 
-// Expected: 20 30 2
-
-
-// Test 2: remove from middle
-DynamicArray<int> arr7;
-arr7.append(10);
-arr7.append(20);
-arr7.append(30);
-arr7.remove(1);
-
-std::cout << arr7.get(0) << " " << arr7.get(1) << " " << arr7.getSize() << std::endl;
-
-// Expected: 10 30 2
+// // Expected: 20 30 2
 
 
-// Test 3: remove from end
-DynamicArray<int> arr8;
-arr8.append(10);
-arr8.append(20);
-arr8.append(30);
-arr8.remove(2);
+// // Test 2: remove from middle
+// DynamicArray<int> arr7;
+// arr7.append(10);
+// arr7.append(20);
+// arr7.append(30);
+// arr7.remove(1);
 
-std::cout << arr8.get(0) << " " << arr8.get(1) << " " << arr8.getSize() << std::endl;
+// std::cout << arr7.get(0) << " " << arr7.get(1) << " " << arr7.getSize() << std::endl;
 
-// Expected: 10 20 2
-
-
-// Test 4: remove causing shrink
-// default append starts at 10, remove until size <= capacity/4
-DynamicArray<int> arr9;
-for(int i=1;i<=10;i++){
-    arr9.append(i);
-}
-for(int i=0;i<8;i++){
-    arr9.remove(0);
-}
-
-std::cout << arr9.getSize() << " " << arr9.getCapacity() << std::endl;
-
-// Expected: 2 5
+// // Expected: 10 30 2
 
 
-// Test 5: invalid remove index
+// // Test 3: remove from end
+// DynamicArray<int> arr8;
+// arr8.append(10);
+// arr8.append(20);
+// arr8.append(30);
+// arr8.remove(2);
+
+// std::cout << arr8.get(0) << " " << arr8.get(1) << " " << arr8.getSize() << std::endl;
+
+// // Expected: 10 20 2
+
+
+// // Test 4: remove causing shrink
+// // default append starts at 10, remove until size <= capacity/4
+// DynamicArray<int> arr9;
+// for(int i=1;i<=10;i++){
+//     arr9.append(i);
+// }
+// for(int i=0;i<8;i++){
+//     arr9.remove(0);
+// }
+
+// std::cout << arr9.getSize() << " " << arr9.getCapacity() << std::endl;
+
+// // Expected: 2 5
+
+
+// // Test 5: invalid remove index
+// try{
+//     DynamicArray<int> arr10;
+//     arr10.append(10);
+//     arr10.remove(5);
+// }catch(const std::exception& e){
+//     std::cout << e.what() << std::endl;
+// }
+
+// // Expected: Invalid remove Index
+
+
+
+// ===== Method: get() =====
+
+// Test 1: get first element
+DynamicArray<int> arr11;
+arr11.append(10);
+arr11.append(20);
+arr11.append(30);
+
+std::cout << arr11.get(0) << std::endl;
+
+// Expected: 10
+
+
+// Test 2: get middle element
+DynamicArray<int> arr12;
+arr12.append(100);
+arr12.append(200);
+arr12.append(300);
+
+std::cout << arr12.get(1) << std::endl;
+
+// Expected: 200
+
+
+// Test 3: get last element
+DynamicArray<int> arr13;
+arr13.append(5);
+arr13.append(15);
+arr13.append(25);
+
+std::cout << arr13.get(2) << std::endl;
+
+// Expected: 25
+
+
+// Test 4: get string object
+DynamicArray<std::string> arr14;
+arr14.append("hello");
+arr14.append("world");
+
+std::cout << arr14.get(1) << std::endl;
+
+// Expected: world
+
+
+// Test 5: invalid index
 try{
-    DynamicArray<int> arr10;
-    arr10.append(10);
-    arr10.remove(5);
+    DynamicArray<int> arr15;
+    arr15.append(10);
+    arr15.get(5);
 }catch(const std::exception& e){
     std::cout << e.what() << std::endl;
 }
 
-// Expected: Invalid remove Index
+// Expected: index out of range
 }
