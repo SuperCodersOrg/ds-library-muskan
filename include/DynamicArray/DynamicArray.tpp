@@ -51,11 +51,11 @@ DynamicArray<T>::DynamicArray(const DynamicArray &other){
 }
 
 template<typename T>
-int DynamicArray<T>::getSize(){
+int DynamicArray<T>::getSize() const{
   return this->size;
 }
 template<typename T>
-int DynamicArray<T>::getCapacity(){
+int DynamicArray<T>::getCapacity() const{
   return this->capacity;
 }
 template <typename T>
@@ -108,7 +108,7 @@ void DynamicArray<T>::shrink(){
 }
 
 template <typename T>
-void DynamicArray<T>::append(T data)
+void DynamicArray<T>::append(const T& data)
 {
   if (this->capacity == 0)
   {
@@ -131,7 +131,7 @@ void DynamicArray<T>::append(T data)
   this->size++;
 }
 template<typename T>
-void DynamicArray<T>::insert(int index,T data){ 
+void DynamicArray<T>::insert(int index,const T& data){ 
   if(index<0||index>size){
     throw std::out_of_range("Invalid insert index");
   }
@@ -179,7 +179,7 @@ void DynamicArray<T>::remove(int index){
   }
 }
 template <typename T>
-T DynamicArray<T>::get(int index)
+const T& DynamicArray<T>::get(int index)const 
 {
   if (index < 0 || index >= size)
   {
