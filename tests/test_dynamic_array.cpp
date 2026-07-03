@@ -284,4 +284,55 @@ int main() {
 // std::cout << arr20.getSize() << std::endl;
 
 // // Expected: 1
+
+
+
+// ===== Method: getCapacity() =====
+
+// Test 1: default constructor
+DynamicArray<int> arr21;
+std::cout << arr21.getCapacity() << std::endl;
+
+// Expected: 0
+
+
+// Test 2: parameterized constructor
+DynamicArray<int> arr22(5);
+std::cout << arr22.getCapacity() << std::endl;
+
+// Expected: 5
+
+
+// Test 3: after first append (default allocates 10)
+DynamicArray<int> arr23;
+arr23.append(10);
+
+std::cout << arr23.getCapacity() << std::endl;
+
+// Expected: 10
+
+
+// Test 4: after regrow
+DynamicArray<int> arr24;
+for(int i=1;i<=11;i++){
+    arr24.append(i);
+}
+
+std::cout << arr24.getCapacity() << std::endl;
+
+// Expected: 20
+
+
+// Test 5: after shrink
+DynamicArray<int> arr25;
+for(int i=1;i<=10;i++){
+    arr25.append(i);
+}
+for(int i=0;i<8;i++){
+    arr25.remove(0);
+}
+
+std::cout << arr25.getCapacity() << std::endl;
+
+// Expected: 5
 }
