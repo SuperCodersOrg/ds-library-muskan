@@ -10,7 +10,8 @@ int main(){
   d.append("is");
   d.append("john");
   d.insert(0,"Nic to meet you");
-  for(int i=0;i<=5;i++){
+  d.remove(1);
+  for(int i=0;i<5;i++){
     cout<<d.get(i)<<" ";
   }
   return 0;

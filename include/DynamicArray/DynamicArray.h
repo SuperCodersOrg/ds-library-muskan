@@ -12,8 +12,10 @@ class DynamicArray{
     int getSize();
     int getCapacity();
     void regrow();
+    void shrink();
     void append(T data);
     void insert(int index,T data);
+    void remove(int index);
     T get(int index);
 };
 #endif
