@@ -1,12 +1,15 @@
 #include<iostream>
+#include<string>
 #include "../include/DynamicArray/DynamicArray.h"
 using namespace std;
 int main(){
-  DynamicArray<int> d;
-  for(int i=1;i<=10;i++){
-    d.append(10*i);
-  }
-  for(int i=0;i<10;i++){
+  DynamicArray<string> d;
+  d.append("hello");
+  d.append("my");
+  d.append("name");
+  d.append("is");
+  d.append("john");
+  for(int i=0;i<5;i++){
     cout<<d.get(i)<<" ";
   }
   return 0;
