@@ -13,7 +13,7 @@ DynamicArray<T>::DynamicArray(int capacity)
 {
   if (capacity <= 0)
   {
-    throw std::invalid_argument("capacity must be positive");
+    throw std::invalid_argument("Invalid argument");
   }
   this->size = 0;
   this->capacity = capacity;
