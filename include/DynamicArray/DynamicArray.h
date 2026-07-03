@@ -11,6 +11,7 @@ class DynamicArray{
     DynamicArray(int capacity);
     ~DynamicArray();
     DynamicArray(const DynamicArray &other);
+    DynamicArray<T>& operator=(const DynamicArray &other);
     int getSize();
     int getCapacity();
     void regrow();

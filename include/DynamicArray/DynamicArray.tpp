@@ -48,7 +48,6 @@ DynamicArray<T>::DynamicArray(const DynamicArray &other){
   for(int i=0;i<this->size;i++){
     new(&this->arr[i])T(other.arr[i]);
   }
-
 }
 
 template<typename T>
@@ -187,4 +186,31 @@ T DynamicArray<T>::get(int index)
     throw std::out_of_range("index out of range");
   }
   return this->arr[index];
+}
+template<typename T>
+DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray &other){
+  if(this==&other){
+    return *this;
+  }
+  for(int i=0;i<this->size;i++){
+    this->arr[i].~T();
+  }
+  free(this->arr);
+  this->arr=nullptr;
+  this->size=other.size;
+  this->capacity=other.capacity;
+  if(this->capacity==0){
+  this->arr=nullptr;
+  return *this;
+  }
+  // this->arr=nullptr;
+  T* temp=(T*)malloc(this->capacity*sizeof(T));
+  if(temp==nullptr){
+    throw std::bad_alloc();
+  }
+    this->arr=temp;
+  for(int i=0;i<this->size;i++){
+    new(&this->arr[i])T(other.arr[i]);
+  }
+  return *this;
 }
