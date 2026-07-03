@@ -9,7 +9,17 @@ int main(){
   d.append("name");
   d.append("is");
   d.append("john");
-  for(int i=0;i<5;i++){
+  d.append("hello");
+  d.append("my");
+  d.append("name");
+  d.append("is");
+  d.append("max");
+   d.append("hello");
+  d.append("my");
+  d.append("name");
+  d.append("is");
+  d.append("Jessi");
+  for(int i=0;i<15;i++){
     cout<<d.get(i)<<" ";
   }
   return 0;

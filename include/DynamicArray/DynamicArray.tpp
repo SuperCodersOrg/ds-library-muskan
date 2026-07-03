@@ -58,7 +58,7 @@ void DynamicArray<T>::append(T data)
   {
     regrow();
   }
-  this->arr[this->size] = data;
+  new(&this->arr[this->size])T(data);
   this->size++;
 }
 template<typename T>
