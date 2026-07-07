@@ -23,6 +23,9 @@ class LinkList{
   void deleteFront();
   void deleteBack();
   void print() const;
+  void removeAt(int index);
+  bool removeValue(T value);
+  void clear();
 };
 #include "LinkList.cpp"
 #endif

@@ -114,6 +114,81 @@ void LinkList<T>::deleteBack(){
   --size;
 }
 template<typename T>
+void LinkList<T>::removeAt(int index){
+  if(index<0||index>=size){
+    throw std::out_of_range("invalid argument");
+  }
+  if(index==0){
+    if(size==1){
+      tail=nullptr;
+    }
+    Node *temp=head;
+    head=head->next;
+    (*temp).~Node();
+    free(temp);
+    --size;
+    return;
+  }
+
+  Node* temp=head;
+  int i=1;
+  while(i<index){
+    temp=temp->next;
+    ++i;
+  }
+  if(index==size-1){
+    tail=temp;
+  }
+  Node* temporary=temp->next;
+  temp->next=temp->next->next;
+  (*temporary).~Node();
+  free(temporary);
+  --size;
+}
+template<typename T>
+bool LinkList<T>::removeValue(T value){
+  Node *temp=head;
+  if(head==nullptr)return false;
+  if(temp->data==value){
+    deleteFront();
+    return true;
+  }
+  int i=1;
+  while(temp!=nullptr){
+    if(temp->next!=nullptr&&temp->next->data==value){
+      // if(i==size-1){
+      //   deleteBack();
+      //   return true;
+      // }
+      Node* temporary=temp->next;
+      if(temporary==tail){
+        tail=temp;
+      }
+      temp->next=temp->next->next;
+      (*temporary).~Node();
+      free(temporary);
+      --size;
+      return true;
+    }
+    temp=temp->next;
+    ++i;
+  }
+  return false;
+}
+template<typename T>
+void LinkList<T>::clear(){
+  Node*temp=head;
+  while(temp!=nullptr){
+    Node* temporary=temp;
+    temp=temp->next;
+    (*temporary).~Node();
+    free(temporary);
+  }
+  head=nullptr;
+  tail=nullptr;
+  size=0;
+}
+template<typename T>
 void LinkList<T>::print() const{
   Node* temp=head;
   while(temp!=nullptr){
