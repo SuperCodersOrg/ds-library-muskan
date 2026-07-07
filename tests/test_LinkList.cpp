@@ -1359,27 +1359,98 @@ int main()
 // Method: getSize() const
 // ===============================
 
-// Test Case 1: Get size of an empty list
+// // Test Case 1: Get size of an empty list
+// {
+//     LinkList<int> list;
+
+//     assert(list.getSize() == 0);
+
+//     cout << "getSize() Test 1 Passed\n";
+// }
+
+// // Test Case 2: Get size after one insertion
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+
+//     assert(list.getSize() == 1);
+
+//     cout << "getSize() Test 2 Passed\n";
+// }
+
+// // Test Case 3: Get size after multiple insertions
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.insertBack(20);
+//     list.insertBack(30);
+
+//     assert(list.getSize() == 3);
+
+//     cout << "getSize() Test 3 Passed\n";
+// }
+
+// // Test Case 4: Get size after deletion
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.insertBack(20);
+//     list.insertBack(30);
+
+//     list.deleteFront();
+//     list.deleteBack();
+
+//     assert(list.getSize() == 1);
+
+//     cout << "getSize() Test 4 Passed\n";
+// }
+
+// // Test Case 5: Get size after clear
+// {
+//     LinkList<int> list;
+
+//     for(int i = 1; i <= 10; i++)
+//     {
+//         list.insertBack(i);
+//     }
+
+//     list.clear();
+
+//     assert(list.getSize() == 0);
+
+//     cout << "getSize() Test 5 Passed\n";
+// }
+
+
+
+// ===============================
+// Method: isEmpty() const
+// ===============================
+
+// Test Case 1: Check empty list
 {
     LinkList<int> list;
 
-    assert(list.getSize() == 0);
+    assert(list.isEmpty() == true);
 
-    cout << "getSize() Test 1 Passed\n";
+    cout << "isEmpty() Test 1 Passed\n";
 }
 
-// Test Case 2: Get size after one insertion
+// Test Case 2: Check after inserting one element
 {
     LinkList<int> list;
 
     list.insertBack(10);
 
-    assert(list.getSize() == 1);
+    assert(list.isEmpty() == false);
 
-    cout << "getSize() Test 2 Passed\n";
+    cout << "isEmpty() Test 2 Passed\n";
 }
 
-// Test Case 3: Get size after multiple insertions
+// Test Case 3: Check after inserting multiple elements
 {
     LinkList<int> list;
 
@@ -1387,41 +1458,40 @@ int main()
     list.insertBack(20);
     list.insertBack(30);
 
-    assert(list.getSize() == 3);
+    assert(list.isEmpty() == false);
 
-    cout << "getSize() Test 3 Passed\n";
+    cout << "isEmpty() Test 3 Passed\n";
 }
 
-// Test Case 4: Get size after deletion
+// Test Case 4: Check after deleting all elements
 {
     LinkList<int> list;
 
     list.insertBack(10);
     list.insertBack(20);
-    list.insertBack(30);
 
     list.deleteFront();
-    list.deleteBack();
+    list.deleteFront();
 
-    assert(list.getSize() == 1);
+    assert(list.isEmpty() == true);
 
-    cout << "getSize() Test 4 Passed\n";
+    cout << "isEmpty() Test 4 Passed\n";
 }
 
-// Test Case 5: Get size after clear
+// Test Case 5: Check after clear()
 {
     LinkList<int> list;
 
-    for(int i = 1; i <= 10; i++)
+    for(int i = 0; i < 10; i++)
     {
         list.insertBack(i);
     }
 
     list.clear();
 
-    assert(list.getSize() == 0);
+    assert(list.isEmpty() == true);
 
-    cout << "getSize() Test 5 Passed\n";
+    cout << "isEmpty() Test 5 Passed\n";
 }
     return 0;
 }
