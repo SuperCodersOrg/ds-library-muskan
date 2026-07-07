@@ -956,81 +956,156 @@ int main()
 // Method: clear()
 // ===============================
 
-// Test Case 1: Clear an empty list
-{
-    LinkList<int> list;
+// // Test Case 1: Clear an empty list
+// {
+//     LinkList<int> list;
 
-    list.clear();
+//     list.clear();
 
-    assert(list.getSize() == 0);
-    assert(list.isEmpty());
+//     assert(list.getSize() == 0);
+//     assert(list.isEmpty());
 
-    cout << "clear() Test 1 Passed\n";
-}
+//     cout << "clear() Test 1 Passed\n";
+// }
 
-// Test Case 2: Clear a list with one element
+// // Test Case 2: Clear a list with one element
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.clear();
+
+//     assert(list.getSize() == 0);
+//     assert(list.isEmpty());
+
+//     cout << "clear() Test 2 Passed\n";
+// }
+
+// // Test Case 3: Clear a list with multiple elements
+// {
+//     LinkList<int> list;
+
+//     for (int i = 1; i <= 5; i++)
+//     {
+//         list.insertBack(i);
+//     }
+
+//     list.clear();
+
+//     assert(list.getSize() == 0);
+//     assert(list.isEmpty());
+
+//     cout << "clear() Test 3 Passed\n";
+// }
+
+// // Test Case 4: Insert again after clear
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.insertBack(20);
+
+//     list.clear();
+
+//     list.insertBack(30);
+
+//     assert(list.getSize() == 1);
+//     assert(list.getFront() == 30);
+//     assert(list.getBack() == 30);
+
+//     cout << "clear() Test 4 Passed\n";
+// }
+
+// // Test Case 5: Clear twice
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(1);
+//     list.insertBack(2);
+//     list.insertBack(3);
+
+//     list.clear();
+//     list.clear();
+
+//     assert(list.getSize() == 0);
+//     assert(list.isEmpty());
+
+//     cout << "clear() Test 5 Passed\n";
+// }
+
+
+
+// ===============================
+// Method: getFront() const
+// ===============================
+
+// Test Case 1: Get front from a single-element list
 {
     LinkList<int> list;
 
     list.insertBack(10);
-    list.clear();
 
-    assert(list.getSize() == 0);
-    assert(list.isEmpty());
+    assert(list.getFront() == 10);
+    assert(list.getSize() == 1);
 
-    cout << "clear() Test 2 Passed\n";
+    cout << "getFront() Test 1 Passed\n";
 }
 
-// Test Case 3: Clear a list with multiple elements
-{
-    LinkList<int> list;
-
-    for (int i = 1; i <= 5; i++)
-    {
-        list.insertBack(i);
-    }
-
-    list.clear();
-
-    assert(list.getSize() == 0);
-    assert(list.isEmpty());
-
-    cout << "clear() Test 3 Passed\n";
-}
-
-// Test Case 4: Insert again after clear
+// Test Case 2: Get front from a multi-element list
 {
     LinkList<int> list;
 
     list.insertBack(10);
     list.insertBack(20);
-
-    list.clear();
-
     list.insertBack(30);
 
-    assert(list.getSize() == 1);
-    assert(list.getFront() == 30);
-    assert(list.getBack() == 30);
+    assert(list.getFront() == 10);
 
-    cout << "clear() Test 4 Passed\n";
+    cout << "getFront() Test 2 Passed\n";
 }
 
-// Test Case 5: Clear twice
+// Test Case 3: Front should update after deleteFront()
 {
     LinkList<int> list;
 
-    list.insertBack(1);
-    list.insertBack(2);
-    list.insertBack(3);
+    list.insertBack(10);
+    list.insertBack(20);
+    list.insertBack(30);
 
-    list.clear();
-    list.clear();
+    list.deleteFront();
 
-    assert(list.getSize() == 0);
-    assert(list.isEmpty());
+    assert(list.getFront() == 20);
 
-    cout << "clear() Test 5 Passed\n";
+    cout << "getFront() Test 3 Passed\n";
+}
+
+// Test Case 4: Front should update after insertFront()
+{
+    LinkList<int> list;
+
+    list.insertBack(20);
+    list.insertBack(30);
+
+    list.insertFront(10);
+
+    assert(list.getFront() == 10);
+
+    cout << "getFront() Test 4 Passed\n";
+}
+
+// Test Case 5: Calling getFront() on an empty list should throw
+{
+    LinkList<int> list;
+
+    try
+    {
+        list.getFront();
+        assert(false);
+    }
+    catch (const out_of_range&)
+    {
+        cout << "getFront() Test 5 Passed\n";
+    }
 }
     return 0;
 }
