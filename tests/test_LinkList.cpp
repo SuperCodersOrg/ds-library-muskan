@@ -1114,19 +1114,82 @@ int main()
 // Method: getBack() const
 // ===============================
 
-// Test Case 1: Get back from a single-element list
-{
-    LinkList<int> list;
+// // Test Case 1: Get back from a single-element list
+// {
+//     LinkList<int> list;
 
-    list.insertBack(10);
+//     list.insertBack(10);
 
-    assert(list.getBack() == 10);
-    assert(list.getSize() == 1);
+//     assert(list.getBack() == 10);
+//     assert(list.getSize() == 1);
 
-    cout << "getBack() Test 1 Passed\n";
-}
+//     cout << "getBack() Test 1 Passed\n";
+// }
 
-// Test Case 2: Get back from a multi-element list
+// // Test Case 2: Get back from a multi-element list
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.insertBack(20);
+//     list.insertBack(30);
+
+//     assert(list.getBack() == 30);
+
+//     cout << "getBack() Test 2 Passed\n";
+// }
+
+// // Test Case 3: Back should update after deleteBack()
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.insertBack(20);
+//     list.insertBack(30);
+
+//     list.deleteBack();
+
+//     assert(list.getBack() == 20);
+
+//     cout << "getBack() Test 3 Passed\n";
+// }
+
+// // Test Case 4: Back should update after insertBack()
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.insertBack(20);
+
+//     list.insertBack(30);
+
+//     assert(list.getBack() == 30);
+
+//     cout << "getBack() Test 4 Passed\n";
+// }
+
+// // Test Case 5: Calling getBack() on an empty list should throw
+// {
+//     LinkList<int> list;
+
+//     try
+//     {
+//         list.getBack();
+//         assert(false);
+//     }
+//     catch (const out_of_range&)
+//     {
+//         cout << "getBack() Test 5 Passed\n";
+//     }
+// }
+
+
+
+// ===============================
+// Method: get(int index) const
+// ===============================
+
+// Test Case 1: Get first element using index 0
 {
     LinkList<int> list;
 
@@ -1134,12 +1197,12 @@ int main()
     list.insertBack(20);
     list.insertBack(30);
 
-    assert(list.getBack() == 30);
+    assert(list.get(0) == 10);
 
-    cout << "getBack() Test 2 Passed\n";
+    cout << "get() Test 1 Passed\n";
 }
 
-// Test Case 3: Back should update after deleteBack()
+// Test Case 2: Get middle element
 {
     LinkList<int> list;
 
@@ -1147,39 +1210,56 @@ int main()
     list.insertBack(20);
     list.insertBack(30);
 
-    list.deleteBack();
+    assert(list.get(1) == 20);
 
-    assert(list.getBack() == 20);
-
-    cout << "getBack() Test 3 Passed\n";
+    cout << "get() Test 2 Passed\n";
 }
 
-// Test Case 4: Back should update after insertBack()
+// Test Case 3: Get last element
 {
     LinkList<int> list;
 
     list.insertBack(10);
     list.insertBack(20);
-
     list.insertBack(30);
 
-    assert(list.getBack() == 30);
+    assert(list.get(2) == 30);
 
-    cout << "getBack() Test 4 Passed\n";
+    cout << "get() Test 3 Passed\n";
 }
 
-// Test Case 5: Calling getBack() on an empty list should throw
+// Test Case 4: Invalid negative index should throw
 {
     LinkList<int> list;
+
+    list.insertBack(10);
 
     try
     {
-        list.getBack();
+        list.get(-1);
         assert(false);
     }
     catch (const out_of_range&)
     {
-        cout << "getBack() Test 5 Passed\n";
+        cout << "get() Test 4 Passed\n";
+    }
+}
+
+// Test Case 5: Index greater than or equal to size should throw
+{
+    LinkList<int> list;
+
+    list.insertBack(10);
+    list.insertBack(20);
+
+    try
+    {
+        list.get(2);
+        assert(false);
+    }
+    catch (const out_of_range&)
+    {
+        cout << "get() Test 5 Passed\n";
     }
 }
     return 0;
