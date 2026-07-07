@@ -435,80 +435,165 @@ int main()
 // Method: insertBack()
 // ===============================
 
-// Test Case 1: Insert into an empty list
+// // Test Case 1: Insert into an empty list
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+
+//     assert(list.getSize() == 1);
+//     assert(list.getFront() == 10);
+//     assert(list.getBack() == 10);
+
+//     cout << "insertBack Test 1 Passed\n";
+// }
+
+// // Test Case 2: Insert multiple elements at back
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.insertBack(20);
+//     list.insertBack(30);
+
+//     assert(list.getSize() == 3);
+//     assert(list.getFront() == 10);
+//     assert(list.getBack() == 30);
+
+//     assert(list.get(0) == 10);
+//     assert(list.get(1) == 20);
+//     assert(list.get(2) == 30);
+
+//     cout << "insertBack Test 2 Passed\n";
+// }
+
+// // Test Case 3: Insert negative values
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(-10);
+//     list.insertBack(-20);
+
+//     assert(list.getSize() == 2);
+//     assert(list.getFront() == -10);
+//     assert(list.getBack() == -20);
+
+//     cout << "insertBack Test 3 Passed\n";
+// }
+
+// // Test Case 4: Insert string values
+// {
+//     LinkList<string> list;
+
+//     list.insertBack("Hello");
+//     list.insertBack("World");
+
+//     assert(list.getSize() == 2);
+//     assert(list.getFront() == "Hello");
+//     assert(list.getBack() == "World");
+
+//     cout << "insertBack Test 4 Passed\n";
+// }
+
+// // Test Case 5: Large number of insertions
+// {
+//     LinkList<int> list;
+
+//     for (int i = 1; i <= 100; i++)
+//     {
+//         list.insertBack(i);
+//     }
+
+//     assert(list.getSize() == 100);
+//     assert(list.getFront() == 1);
+//     assert(list.getBack() == 100);
+
+//     cout << "insertBack Test 5 Passed\n";
+// }
+
+
+
+// ===============================
+// Method: insert(int index, const T& value)
+// ===============================
+
+// Test Case 1: Insert at the beginning
+{
+    LinkList<int> list;
+
+    list.insertBack(20);
+    list.insertBack(30);
+    list.insert(0, 10);
+
+    assert(list.getSize() == 3);
+    assert(list.get(0) == 10);
+    assert(list.get(1) == 20);
+    assert(list.get(2) == 30);
+
+    cout << "insert() Test 1 Passed\n";
+}
+
+// Test Case 2: Insert in the middle
 {
     LinkList<int> list;
 
     list.insertBack(10);
+    list.insertBack(30);
+    list.insert(1, 20);
 
-    assert(list.getSize() == 1);
-    assert(list.getFront() == 10);
-    assert(list.getBack() == 10);
+    assert(list.getSize() == 3);
+    assert(list.get(0) == 10);
+    assert(list.get(1) == 20);
+    assert(list.get(2) == 30);
 
-    cout << "insertBack Test 1 Passed\n";
+    cout << "insert() Test 2 Passed\n";
 }
 
-// Test Case 2: Insert multiple elements at back
+// Test Case 3: Insert at the end
 {
     LinkList<int> list;
 
     list.insertBack(10);
     list.insertBack(20);
-    list.insertBack(30);
+    list.insert(2, 30);
 
     assert(list.getSize() == 3);
     assert(list.getFront() == 10);
     assert(list.getBack() == 30);
 
-    assert(list.get(0) == 10);
-    assert(list.get(1) == 20);
-    assert(list.get(2) == 30);
-
-    cout << "insertBack Test 2 Passed\n";
+    cout << "insert() Test 3 Passed\n";
 }
 
-// Test Case 3: Insert negative values
+// Test Case 4: Invalid negative index
 {
     LinkList<int> list;
 
-    list.insertBack(-10);
-    list.insertBack(-20);
-
-    assert(list.getSize() == 2);
-    assert(list.getFront() == -10);
-    assert(list.getBack() == -20);
-
-    cout << "insertBack Test 3 Passed\n";
-}
-
-// Test Case 4: Insert string values
-{
-    LinkList<string> list;
-
-    list.insertBack("Hello");
-    list.insertBack("World");
-
-    assert(list.getSize() == 2);
-    assert(list.getFront() == "Hello");
-    assert(list.getBack() == "World");
-
-    cout << "insertBack Test 4 Passed\n";
-}
-
-// Test Case 5: Large number of insertions
-{
-    LinkList<int> list;
-
-    for (int i = 1; i <= 100; i++)
+    try
     {
-        list.insertBack(i);
+        list.insert(-1, 100);
+        assert(false);
     }
+    catch (const out_of_range&)
+    {
+        cout << "insert() Test 4 Passed\n";
+    }
+}
 
-    assert(list.getSize() == 100);
-    assert(list.getFront() == 1);
-    assert(list.getBack() == 100);
+// Test Case 5: Index greater than size
+{
+    LinkList<int> list;
 
-    cout << "insertBack Test 5 Passed\n";
+    list.insertBack(10);
+
+    try
+    {
+        list.insert(2, 20);
+        assert(false);
+    }
+    catch (const out_of_range&)
+    {
+        cout << "insert() Test 5 Passed\n";
+    }
 }
     return 0;
 }
