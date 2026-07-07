@@ -14,5 +14,7 @@ LinkList<string> l;
   l.insertBack("four");
   l.insertBack("five");
   cout<<l.get(3);
+  // l.clear();
+  cout<<l.isEmpty();
   l.print();
 }

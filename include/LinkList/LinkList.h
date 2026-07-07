@@ -28,6 +28,8 @@ class LinkList{
   const T& getFront();
   const T& getBack();
   const T& get(int index);
+  int getSize();
+  bool isEmpty();
   void print() const;
 
 };

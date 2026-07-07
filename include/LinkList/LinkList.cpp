@@ -207,6 +207,14 @@ const T& LinkList<T>::get(int index){
  return temp->data;
 }
 template<typename T>
+int LinkList<T>::getSize(){
+  return size;
+}
+template<typename T>
+bool LinkList<T>::isEmpty(){
+  return head==nullptr?true:false;
+}
+template<typename T>
 void LinkList<T>::print() const{
   Node* temp=head;
   if(head==nullptr)std::cout<<"List is empty\n";
