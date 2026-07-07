@@ -1040,18 +1040,93 @@ int main()
 // ===============================
 
 // Test Case 1: Get front from a single-element list
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+
+//     assert(list.getFront() == 10);
+//     assert(list.getSize() == 1);
+
+//     cout << "getFront() Test 1 Passed\n";
+// }
+
+// // Test Case 2: Get front from a multi-element list
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.insertBack(20);
+//     list.insertBack(30);
+
+//     assert(list.getFront() == 10);
+
+//     cout << "getFront() Test 2 Passed\n";
+// }
+
+// // Test Case 3: Front should update after deleteFront()
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.insertBack(20);
+//     list.insertBack(30);
+
+//     list.deleteFront();
+
+//     assert(list.getFront() == 20);
+
+//     cout << "getFront() Test 3 Passed\n";
+// }
+
+// // Test Case 4: Front should update after insertFront()
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(20);
+//     list.insertBack(30);
+
+//     list.insertFront(10);
+
+//     assert(list.getFront() == 10);
+
+//     cout << "getFront() Test 4 Passed\n";
+// }
+
+// // Test Case 5: Calling getFront() on an empty list should throw
+// {
+//     LinkList<int> list;
+
+//     try
+//     {
+//         list.getFront();
+//         assert(false);
+//     }
+//     catch (const out_of_range&)
+//     {
+//         cout << "getFront() Test 5 Passed\n";
+//     }
+// }
+
+
+
+// ===============================
+// Method: getBack() const
+// ===============================
+
+// Test Case 1: Get back from a single-element list
 {
     LinkList<int> list;
 
     list.insertBack(10);
 
-    assert(list.getFront() == 10);
+    assert(list.getBack() == 10);
     assert(list.getSize() == 1);
 
-    cout << "getFront() Test 1 Passed\n";
+    cout << "getBack() Test 1 Passed\n";
 }
 
-// Test Case 2: Get front from a multi-element list
+// Test Case 2: Get back from a multi-element list
 {
     LinkList<int> list;
 
@@ -1059,12 +1134,12 @@ int main()
     list.insertBack(20);
     list.insertBack(30);
 
-    assert(list.getFront() == 10);
+    assert(list.getBack() == 30);
 
-    cout << "getFront() Test 2 Passed\n";
+    cout << "getBack() Test 2 Passed\n";
 }
 
-// Test Case 3: Front should update after deleteFront()
+// Test Case 3: Back should update after deleteBack()
 {
     LinkList<int> list;
 
@@ -1072,39 +1147,39 @@ int main()
     list.insertBack(20);
     list.insertBack(30);
 
-    list.deleteFront();
+    list.deleteBack();
 
-    assert(list.getFront() == 20);
+    assert(list.getBack() == 20);
 
-    cout << "getFront() Test 3 Passed\n";
+    cout << "getBack() Test 3 Passed\n";
 }
 
-// Test Case 4: Front should update after insertFront()
+// Test Case 4: Back should update after insertBack()
 {
     LinkList<int> list;
 
+    list.insertBack(10);
     list.insertBack(20);
+
     list.insertBack(30);
 
-    list.insertFront(10);
+    assert(list.getBack() == 30);
 
-    assert(list.getFront() == 10);
-
-    cout << "getFront() Test 4 Passed\n";
+    cout << "getBack() Test 4 Passed\n";
 }
 
-// Test Case 5: Calling getFront() on an empty list should throw
+// Test Case 5: Calling getBack() on an empty list should throw
 {
     LinkList<int> list;
 
     try
     {
-        list.getFront();
+        list.getBack();
         assert(false);
     }
     catch (const out_of_range&)
     {
-        cout << "getFront() Test 5 Passed\n";
+        cout << "getBack() Test 5 Passed\n";
     }
 }
     return 0;
