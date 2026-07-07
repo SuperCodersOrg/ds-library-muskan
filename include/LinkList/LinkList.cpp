@@ -207,6 +207,16 @@ const T& LinkList<T>::get(int index){
  return temp->data;
 }
 template<typename T>
+void LinkList<T>::set(int index,const T& value){
+  int i=0;
+  Node* temp=head;
+  while(i<index){
+    temp=temp->next;
+    ++i;
+  }
+  temp->data=value;
+}
+template<typename T>
 int LinkList<T>::getSize(){
   return size;
 }

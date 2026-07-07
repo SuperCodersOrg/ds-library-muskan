@@ -10,11 +10,10 @@ LinkList<string> l;
   l.insertBack("one");
   l.insertBack("two");
   l.insertBack("three");
-  l.insert(1,"1.5");
   l.insertBack("four");
   l.insertBack("five");
-  cout<<l.get(3);
-  // l.clear();
-  cout<<l.isEmpty();
-  l.print();
+
+l.set(0,"0");
+l.set(1,"1");
+ l.print();
 }
