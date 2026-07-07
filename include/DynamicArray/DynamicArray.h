@@ -36,6 +36,7 @@ public:
 
     // Access
     const T& get(int index) const;
+    T& get(int index);
 };
 
 #include "DynamicArray.tpp"

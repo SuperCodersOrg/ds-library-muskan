@@ -187,6 +187,15 @@ const T& DynamicArray<T>::get(int index)const
   }
   return this->arr[index];
 }
+template <typename T>
+T& DynamicArray<T>::get(int index) 
+{
+  if (index < 0 || index >= size)
+  {
+    throw std::out_of_range("index out of range");
+  }
+  return this->arr[index];
+}
 template<typename T>
 DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray &other){
   if(this==&other){

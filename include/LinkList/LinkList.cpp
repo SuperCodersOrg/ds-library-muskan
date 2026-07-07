@@ -288,6 +288,7 @@ const T &LinkList<T>::get(int index) const
   }
   return temp->data;
 }
+
 template <typename T>
 void LinkList<T>::set(int index, const T &value) 
 {

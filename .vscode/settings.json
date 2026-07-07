@@ -2,6 +2,11 @@
   "files.associations": {
     "*.dbclient-js": "javascript",
     "string": "cpp",
-    "*.tpp": "cpp"
+    "*.tpp": "cpp",
+    "xstring": "cpp",
+    "system_error": "cpp",
+    "type_traits": "cpp",
+    "xtr1common": "cpp",
+    "xutility": "cpp"
   }
 }
