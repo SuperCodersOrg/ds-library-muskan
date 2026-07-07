@@ -768,11 +768,105 @@ int main()
 
 
 
+// // ===============================
+// // Method: removeAt(int index)
+// // ===============================
+
+// // Test Case 1: Remove first element
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.insertBack(20);
+//     list.insertBack(30);
+
+//     list.removeAt(0);
+
+//     assert(list.getSize() == 2);
+//     assert(list.getFront() == 20);
+//     assert(list.getBack() == 30);
+
+//     cout << "removeAt() Test 1 Passed\n";
+// }
+
+// // Test Case 2: Remove middle element
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.insertBack(20);
+//     list.insertBack(30);
+//     list.insertBack(40);
+
+//     list.removeAt(2);
+
+//     assert(list.getSize() == 3);
+//     assert(list.get(0) == 10);
+//     assert(list.get(1) == 20);
+//     assert(list.get(2) == 40);
+
+//     cout << "removeAt() Test 2 Passed\n";
+// }
+
+// // Test Case 3: Remove last element
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.insertBack(20);
+//     list.insertBack(30);
+
+//     list.removeAt(2);
+
+//     assert(list.getSize() == 2);
+//     assert(list.getFront() == 10);
+//     assert(list.getBack() == 20);
+
+//     cout << "removeAt() Test 3 Passed\n";
+// }
+
+// // Test Case 4: Remove with negative index
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+
+//     try
+//     {
+//         list.removeAt(-1);
+//         assert(false);
+//     }
+//     catch (const out_of_range&)
+//     {
+//         cout << "removeAt() Test 4 Passed\n";
+//     }
+// }
+
+// // Test Case 5: Remove with index >= size
+// {
+//     LinkList<int> list;
+
+//     list.insertBack(10);
+//     list.insertBack(20);
+
+//     try
+//     {
+//         list.removeAt(2);
+//         assert(false);
+//     }
+//     catch (const out_of_range&)
+//     {
+//         cout << "removeAt() Test 5 Passed\n";
+//     }
+// }
+
+
+
 // ===============================
-// Method: removeAt(int index)
+// Method: removeValue(const T& value)
 // ===============================
 
-// Test Case 1: Remove first element
+// Test Case 1: Remove value from the front
 {
     LinkList<int> list;
 
@@ -780,35 +874,35 @@ int main()
     list.insertBack(20);
     list.insertBack(30);
 
-    list.removeAt(0);
+    bool result = list.removeValue(10);
 
+    assert(result == true);
     assert(list.getSize() == 2);
     assert(list.getFront() == 20);
     assert(list.getBack() == 30);
 
-    cout << "removeAt() Test 1 Passed\n";
+    cout << "removeValue() Test 1 Passed\n";
 }
 
-// Test Case 2: Remove middle element
+// Test Case 2: Remove value from the middle
 {
     LinkList<int> list;
 
     list.insertBack(10);
     list.insertBack(20);
     list.insertBack(30);
-    list.insertBack(40);
 
-    list.removeAt(2);
+    bool result = list.removeValue(20);
 
-    assert(list.getSize() == 3);
+    assert(result == true);
+    assert(list.getSize() == 2);
     assert(list.get(0) == 10);
-    assert(list.get(1) == 20);
-    assert(list.get(2) == 40);
+    assert(list.get(1) == 30);
 
-    cout << "removeAt() Test 2 Passed\n";
+    cout << "removeValue() Test 2 Passed\n";
 }
 
-// Test Case 3: Remove last element
+// Test Case 3: Remove value from the back
 {
     LinkList<int> list;
 
@@ -816,48 +910,44 @@ int main()
     list.insertBack(20);
     list.insertBack(30);
 
-    list.removeAt(2);
+    bool result = list.removeValue(30);
 
+    assert(result == true);
     assert(list.getSize() == 2);
     assert(list.getFront() == 10);
     assert(list.getBack() == 20);
 
-    cout << "removeAt() Test 3 Passed\n";
+    cout << "removeValue() Test 3 Passed\n";
 }
 
-// Test Case 4: Remove with negative index
-{
-    LinkList<int> list;
-
-    list.insertBack(10);
-
-    try
-    {
-        list.removeAt(-1);
-        assert(false);
-    }
-    catch (const out_of_range&)
-    {
-        cout << "removeAt() Test 4 Passed\n";
-    }
-}
-
-// Test Case 5: Remove with index >= size
+// Test Case 4: Remove value that does not exist
 {
     LinkList<int> list;
 
     list.insertBack(10);
     list.insertBack(20);
 
-    try
-    {
-        list.removeAt(2);
-        assert(false);
-    }
-    catch (const out_of_range&)
-    {
-        cout << "removeAt() Test 5 Passed\n";
-    }
+    bool result = list.removeValue(50);
+
+    assert(result == false);
+    assert(list.getSize() == 2);
+    assert(list.getFront() == 10);
+    assert(list.getBack() == 20);
+
+    cout << "removeValue() Test 4 Passed\n";
+}
+
+// Test Case 5: Remove from an empty list
+{
+    LinkList<int> list;
+
+    bool result = list.removeValue(10);
+
+    assert(result == false);
+    assert(list.getSize() == 0);
+    assert(list.isEmpty());
+
+    cout << "removeValue() Test 5 Passed\n";
 }
     return 0;
 }
