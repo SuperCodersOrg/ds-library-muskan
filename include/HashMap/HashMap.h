@@ -27,7 +27,7 @@ class HashMap{
     // Pair* find(int key);
     void remove(int key);
     void print();
-    // bool exist(int key);
+    bool exist(int key);
 };
 
 

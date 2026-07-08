@@ -161,16 +161,16 @@ void HashMap::remove(int key){
   }
   throw std::invalid_argument("key did not exist");
 }
-// bool HashMap::exist(int key){
-//   int bucketNo=key%capacity;
-//   LinkList<Pair>& list=buckets.get(bucketNo);
-//   int size=list.getSize();
-//   int i=0;
-//   while(i<size){
-//     if(list.get(i).key==key){ 
-//       return true; 
-//     }
-//     ++i;
-//   }
-//   return false;
-// }
+bool HashMap::exist(int key){
+  int bucketNo=key%capacity;
+  LinkList<Pair>& list=buckets.get(bucketNo);
+  int size=list.getSize();
+  int i=0;
+  while(i<size){
+    if(list.get(i).key==key){ 
+      return true; 
+    }
+    ++i;
+  }
+  return false;
+}
