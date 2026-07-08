@@ -14,6 +14,9 @@ HashMap::HashMap(int capacity) : size(0), capacity(capacity), buckets(capacity)
     buckets.append(LinkList<Pair>());
   }
 }
+// HashMap::HashMap(HashMap &other){
+
+// }
 void HashMap::reHash(){
   int newCapacity=2*capacity;
   // LinkList<Pair>* temp=(LinkList<Pair>*)malloc(sizeOf(LinkList<Pair>)*newCapacity);

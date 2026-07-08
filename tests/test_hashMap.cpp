@@ -12,7 +12,13 @@ int main(){
   h.set(11,"verma1");
   h.set(21,"verma2");
   cout<<h.exist(22)<<"\n"<<h.exist(20);
-  h.print();
+  // h.print();
   
+  h=h;
+  
+
+  // h.print();
+  h.print();
+  // cout<<h.getCapacity()<<"\n"<<h.getCapacity();
   return 0;
 }

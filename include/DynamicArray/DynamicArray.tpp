@@ -34,6 +34,7 @@ DynamicArray<T>::~DynamicArray(){
 }
 template<typename T>
 DynamicArray<T>::DynamicArray(const DynamicArray &other){
+  std::cout<<"Dynamei array copy constructtor run";
   this->size=other.size;
   this->capacity=other.capacity;
   if(this->capacity==0){
@@ -198,6 +199,8 @@ T& DynamicArray<T>::get(int index)
 }
 template<typename T>
 DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray &other){
+std::cout << "DynamicArray assignment this=" << this
+          << " other=" << &other << '\n';
   if(this==&other){
     return *this;
   }

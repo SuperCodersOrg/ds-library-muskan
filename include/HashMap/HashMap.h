@@ -18,6 +18,7 @@ class HashMap{
     
     public:
     HashMap();
+    // HashMap(HashMap& other);
     HashMap(int capacity);
     void reHash();
     int getSize();
