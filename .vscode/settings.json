@@ -50,6 +50,7 @@
     "xlocmon": "cpp",
     "xlocnum": "cpp",
     "xloctime": "cpp",
-    "xmemory": "cpp"
+    "xmemory": "cpp",
+    "sstream": "cpp"
   }
 }

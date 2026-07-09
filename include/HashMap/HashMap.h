@@ -38,6 +38,7 @@ class HashMap{
     void print();
     bool exist(const K& key);
     float loadFactor();
+    void clear();
 };
 
 #include "./HashMap.tpp"

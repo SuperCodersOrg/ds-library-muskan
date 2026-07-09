@@ -213,3 +213,14 @@ template <typename K, typename V>
 float HashMap<K,V>::loadFactor(){
  return (float)this->size/this->capacity;
 }
+
+
+template<typename K,typename V>
+void HashMap<K,V>::clear(){
+  buckets=DynamicArray<LinkList<Pair>>(8);
+  this->size=0;
+  this->capacity=8;
+  for(int i=0;i<capacity;i++){
+    buckets.append(LinkList<Pair>());
+  }
+}
