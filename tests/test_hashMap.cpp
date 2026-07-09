@@ -330,47 +330,151 @@ int main(){
 
 
 
+// // =====================================================
+// // ===== Method: Destructor ============================
+// // =====================================================
+
+// // Test Case 1: Destroy an empty HashMap
+// {
+//     HashMap<int, int> map;
+// }
+// // Expected:
+// // Object destroyed successfully.
+// // No crash.
+// // No memory leak.
+
+
+// // Test Case 2: Destroy a HashMap with one element
+// {
+//     HashMap<int, int> map;
+
+//     map.set(10, 100);
+// }
+// // Expected:
+// // Object destroyed successfully.
+// // No crash.
+// // No memory leak.
+
+
+// // Test Case 3: Destroy a HashMap with multiple elements
+// {
+//     HashMap<int, std::string> map;
+
+//     map.set(1, "One");
+//     map.set(2, "Two");
+//     map.set(3, "Three");
+// }
+// // Expected:
+// // All elements destroyed correctly.
+// // No crash.
+// // No memory leak.
+
+
+// // Test Case 4: Destroy after reHash()
+// {
+//     HashMap<int, int> map;
+
+//     for (int i = 1; i <= 20; i++)
+//     {
+//         map.set(i, i * 100);
+//     }
+// }
+// // Expected:
+// // Destructor runs successfully after rehash.
+// // No double free.
+// // No memory leak.
+
+
+// // Test Case 5: Nested scope destruction
+// {
+//     HashMap<int, int> map1;
+
+//     {
+//         HashMap<int, int> map2;
+
+//         map2.set(1, 100);
+//         map2.set(2, 200);
+//     }
+
+//     map1.set(10, 500);
+// }
+// // Expected:
+// // map2 destroyed when inner scope ends.
+// // map1 destroyed when outer scope ends.
+// // No crash.
+// // No memory leak.
+
+
+
 // =====================================================
-// ===== Method: Destructor ============================
+// ===== Method: set() =================================
 // =====================================================
 
-// Test Case 1: Destroy an empty HashMap
-{
-    HashMap<int, int> map;
-}
-// Expected:
-// Object destroyed successfully.
-// No crash.
-// No memory leak.
-
-
-// Test Case 2: Destroy a HashMap with one element
+// Test Case 1: Insert one key-value pair
 {
     HashMap<int, int> map;
 
     map.set(10, 100);
+
+    std::cout << map.get(10) << std::endl;
+    std::cout << map.getSize() << std::endl;
 }
 // Expected:
-// Object destroyed successfully.
-// No crash.
-// No memory leak.
+// 100
+// 1
 
 
-// Test Case 3: Destroy a HashMap with multiple elements
+// Test Case 2: Insert multiple key-value pairs
+{
+    HashMap<int, int> map;
+
+    map.set(1, 10);
+    map.set(2, 20);
+    map.set(3, 30);
+
+    std::cout << map.get(1) << std::endl;
+    std::cout << map.get(2) << std::endl;
+    std::cout << map.get(3) << std::endl;
+    std::cout << map.getSize() << std::endl;
+}
+// Expected:
+// 10
+// 20
+// 30
+// 3
+
+
+// Test Case 3: Insert duplicate key (should update value)
+{
+    HashMap<int, int> map;
+
+    map.set(5, 50);
+    map.set(5, 500);
+
+    std::cout << map.get(5) << std::endl;
+    std::cout << map.getSize() << std::endl;
+}
+// Expected:
+// 500
+// 1
+
+
+// Test Case 4: Store string values
 {
     HashMap<int, std::string> map;
 
-    map.set(1, "One");
-    map.set(2, "Two");
-    map.set(3, "Three");
+    map.set(1, "Apple");
+    map.set(2, "Banana");
+
+    std::cout << map.get(1) << std::endl;
+    std::cout << map.get(2) << std::endl;
 }
 // Expected:
-// All elements destroyed correctly.
-// No crash.
-// No memory leak.
+// Apple
+// Banana
 
 
-// Test Case 4: Destroy after reHash()
+// Test Case 5: Trigger reHash()
 {
     HashMap<int, int> map;
 
@@ -378,30 +482,14 @@ int main(){
     {
         map.set(i, i * 100);
     }
+
+    std::cout << map.getCapacity() << std::endl;
+    std::cout << map.getSize() << std::endl;
+    std::cout << map.get(20) << std::endl;
 }
 // Expected:
-// Destructor runs successfully after rehash.
-// No double free.
-// No memory leak.
-
-
-// Test Case 5: Nested scope destruction
-{
-    HashMap<int, int> map1;
-
-    {
-        HashMap<int, int> map2;
-
-        map2.set(1, 100);
-        map2.set(2, 200);
-    }
-
-    map1.set(10, 500);
-}
-// Expected:
-// map2 destroyed when inner scope ends.
-// map1 destroyed when outer scope ends.
-// No crash.
-// No memory leak.
+// 32
+// 20
+// 2000
   return 0;
 }
