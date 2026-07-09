@@ -107,7 +107,8 @@ void HashMap<K, V>::set(const K &key, const V &value)
 template <typename K, typename V>
 const V &HashMap<K, V>::get(const K &key)
 {
-  LinkList<Pair> &temp = buckets.get(key % capacity);
+  size_t bucketNo = getHash(key) % capacity;
+  LinkList<Pair> &temp = buckets.get(bucketNo);
   int i = 0;
   // LinkList<Pair> *temporary=temp->head;
   while (i < temp.getSize())
