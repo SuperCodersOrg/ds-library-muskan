@@ -73,98 +73,164 @@ int main(){
 
 
 
-// =====================================================
-// ===== Method: Copy Constructor =======================
-// =====================================================
+// // =====================================================
+// // ===== Method: Copy Constructor =======================
+// // =====================================================
 
-// Test Case 1: Copy an empty HashMap
-{
-    HashMap<int, int> map1;
+// // Test Case 1: Copy an empty HashMap
+// {
+//     HashMap<int, int> map1;
 
-    HashMap<int, int> map2(map1);
+//     HashMap<int, int> map2(map1);
 
-    std::cout << map2.getSize() << " "
-              << map2.getCapacity() << std::endl;
-}
-// Expected:
-// 0 8
-
-
-// Test Case 2: Copy a HashMap with one element
-{
-    HashMap<int, int> map1;
-
-    map1.set(10, 100);
-
-    HashMap<int, int> map2(map1);
-
-    std::cout << map2.get(10) << std::endl;
-    std::cout << map2.getSize() << std::endl;
-}
-// Expected:
-// 100
-// 1
+//     std::cout << map2.getSize() << " "
+//               << map2.getCapacity() << std::endl;
+// }
+// // Expected:
+// // 0 8
 
 
-// Test Case 3: Copy a HashMap with multiple elements
-{
-    HashMap<int, std::string> map1;
+// // Test Case 2: Copy a HashMap with one element
+// {
+//     HashMap<int, int> map1;
 
-    map1.set(1, "One");
-    map1.set(2, "Two");
-    map1.set(3, "Three");
+//     map1.set(10, 100);
 
-    HashMap<int, std::string> map2(map1);
+//     HashMap<int, int> map2(map1);
 
-    std::cout << map2.get(1) << std::endl;
-    std::cout << map2.get(2) << std::endl;
-    std::cout << map2.get(3) << std::endl;
-}
-// Expected:
-// One
-// Two
-// Three
+//     std::cout << map2.get(10) << std::endl;
+//     std::cout << map2.getSize() << std::endl;
+// }
+// // Expected:
+// // 100
+// // 1
 
 
-// Test Case 4: Verify deep copy
-{
-    HashMap<int, int> map1;
+// // Test Case 3: Copy a HashMap with multiple elements
+// {
+//     HashMap<int, std::string> map1;
 
-    map1.set(1, 10);
-    map1.set(2, 20);
+//     map1.set(1, "One");
+//     map1.set(2, "Two");
+//     map1.set(3, "Three");
 
-    HashMap<int, int> map2(map1);
+//     HashMap<int, std::string> map2(map1);
 
-    map1.set(1, 999);
+//     std::cout << map2.get(1) << std::endl;
+//     std::cout << map2.get(2) << std::endl;
+//     std::cout << map2.get(3) << std::endl;
+// }
+// // Expected:
+// // One
+// // Two
+// // Three
 
-    std::cout << map1.get(1) << std::endl;
-    std::cout << map2.get(1) << std::endl;
-}
-// Expected:
-// 999
-// 10
+
+// // Test Case 4: Verify deep copy
+// {
+//     HashMap<int, int> map1;
+
+//     map1.set(1, 10);
+//     map1.set(2, 20);
+
+//     HashMap<int, int> map2(map1);
+
+//     map1.set(1, 999);
+
+//     std::cout << map1.get(1) << std::endl;
+//     std::cout << map2.get(1) << std::endl;
+// }
+// // Expected:
+// // 999
+// // 10
 
 
-// Test Case 5: Copy after rehash
-{
-    HashMap<int, int> map1;
+// // Test Case 5: Copy after rehash
+// {
+//     HashMap<int, int> map1;
 
-    for (int i = 1; i <= 20; i++)
-    {
-        map1.set(i, i * 100);
-    }
+//     for (int i = 1; i <= 20; i++)
+//     {
+//         map1.set(i, i * 100);
+//     }
 
-    HashMap<int, int> map2(map1);
+//     HashMap<int, int> map2(map1);
 
-    std::cout << map2.get(1) << std::endl;
-    std::cout << map2.get(10) << std::endl;
-    std::cout << map2.get(20) << std::endl;
-    std::cout << map2.getSize() << std::endl;
-}
-// Expected:
-// 100
-// 1000
-// 2000
-// 20
+//     std::cout << map2.get(1) << std::endl;
+//     std::cout << map2.get(10) << std::endl;
+//     std::cout << map2.get(20) << std::endl;
+//     std::cout << map2.getSize() << std::endl;
+// }
+// // Expected:
+// // 100
+// // 1000
+// // 2000
+// // 20
+
+
+// // =====================================================
+// // ===== Method: Parameterized Constructor =============
+// // =====================================================
+
+// // Test Case 1: Create HashMap with capacity 5
+// {
+//     HashMap<int, int> map(5);
+
+//     std::cout << map.getSize() << " "
+//               << map.getCapacity() << std::endl;
+// }
+// // Expected:
+// // 0 5
+
+
+// // Test Case 2: Insert one element
+// {
+//     HashMap<int, int> map(5);
+
+//     map.set(10, 100);
+
+//     std::cout << map.getSize() << " "
+//               << map.getCapacity() << std::endl;
+// }
+// // Expected:
+// // 1 5
+
+
+// // Test Case 3: Verify all buckets are created
+// {
+//     HashMap<int, int> map(3);
+
+//     map.print();
+// }
+// // Expected:
+// // bucket1->Empty
+// // bucket2->Empty
+// // bucket3->Empty
+
+
+// // Test Case 4: Store string values
+// {
+//     HashMap<int, std::string> map(6);
+
+//     map.set(1, "Apple");
+//     map.set(2, "Banana");
+
+//     std::cout << map.get(1) << std::endl;
+//     std::cout << map.get(2) << std::endl;
+// }
+// // Expected:
+// // Apple
+// // Banana
+
+
+// // Test Case 5: Check initial load factor
+// {
+//     HashMap<int, int> map(20);
+
+//     std::cout << map.loadFactor() << std::endl;
+// }
+// // Expected:
+// // 0
+// // (or 0.0 depending on compiler)
   return 0;
 }

@@ -200,7 +200,7 @@ T& DynamicArray<T>::get(int index)
 template<typename T>
 DynamicArray<T>& DynamicArray<T>::operator=(const DynamicArray &other){
 // std::cout << "DynamicArray assignment this=" << this
-          << " other=" << &other << '\n';
+//           << " other=" << &other << '\n';
   if(this==&other){
     return *this;
   }
