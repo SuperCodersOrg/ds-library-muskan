@@ -232,5 +232,100 @@ int main(){
 // // Expected:
 // // 0
 // // (or 0.0 depending on compiler)
+
+
+
+// =====================================================
+// ===== Method: Assignment Operator ===================
+// =====================================================
+
+// Test Case 1: Assign an empty HashMap
+{
+    HashMap<int, int> map1;
+    HashMap<int, int> map2;
+
+    map2 = map1;
+
+    std::cout << map2.getSize() << " "
+              << map2.getCapacity() << std::endl;
+}
+// Expected:
+// 0 8
+
+
+// Test Case 2: Assign a HashMap with one element
+{
+    HashMap<int, int> map1;
+    map1.set(10, 100);
+
+    HashMap<int, int> map2;
+    map2 = map1;
+
+    std::cout << map2.get(10) << std::endl;
+    std::cout << map2.getSize() << std::endl;
+}
+// Expected:
+// 100
+// 1
+
+
+// Test Case 3: Assign a HashMap with multiple elements
+{
+    HashMap<int, std::string> map1;
+
+    map1.set(1, "One");
+    map1.set(2, "Two");
+    map1.set(3, "Three");
+
+    HashMap<int, std::string> map2;
+    map2 = map1;
+
+    std::cout << map2.get(1) << std::endl;
+    std::cout << map2.get(2) << std::endl;
+    std::cout << map2.get(3) << std::endl;
+}
+// Expected:
+// One
+// Two
+// Three
+
+
+// Test Case 4: Verify deep copy
+{
+    HashMap<int, int> map1;
+
+    map1.set(1, 10);
+    map1.set(2, 20);
+
+    HashMap<int, int> map2;
+    map2 = map1;
+
+    map1.set(1, 999);
+
+    std::cout << map1.get(1) << std::endl;
+    std::cout << map2.get(1) << std::endl;
+}
+// Expected:
+// 999
+// 10
+
+
+// Test Case 5: Self assignment
+{
+    HashMap<int, int> map;
+
+    map.set(1, 100);
+    map.set(2, 200);
+
+    map = map;
+
+    std::cout << map.get(1) << std::endl;
+    std::cout << map.get(2) << std::endl;
+    std::cout << map.getSize() << std::endl;
+}
+// Expected:
+// 100
+// 200
+// 2
   return 0;
 }
