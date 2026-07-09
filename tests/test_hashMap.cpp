@@ -773,5 +773,92 @@ int main(){
 //
 // No duplicates.
 // No missing elements.
+
+
+
+// =====================================================
+// ===== Method: exist() ===============================
+// =====================================================
+
+// Test Case 1: Check existing key
+{
+    HashMap<int, int> map;
+
+    map.set(10, 100);
+
+    std::cout << map.exist(10) << std::endl;
+}
+// Expected:
+// 1
+
+
+// Test Case 2: Check non-existing key
+{
+    HashMap<int, int> map;
+
+    map.set(10, 100);
+
+    std::cout << map.exist(20) << std::endl;
+}
+// Expected:
+// 0
+
+
+// Test Case 3: Check multiple keys
+{
+    HashMap<int, int> map;
+
+    map.set(1, 100);
+    map.set(2, 200);
+    map.set(3, 300);
+
+    std::cout << map.exist(1) << std::endl;
+    std::cout << map.exist(2) << std::endl;
+    std::cout << map.exist(3) << std::endl;
+    std::cout << map.exist(4) << std::endl;
+}
+// Expected:
+// 1
+// 1
+// 1
+// 0
+
+
+// Test Case 4: Check after reHash()
+{
+    HashMap<int, int> map;
+
+    for (int i = 1; i <= 20; i++)
+    {
+        map.set(i, i * 100);
+    }
+
+    std::cout << map.exist(1) << std::endl;
+    std::cout << map.exist(10) << std::endl;
+    std::cout << map.exist(20) << std::endl;
+    std::cout << map.exist(21) << std::endl;
+}
+// Expected:
+// 1
+// 1
+// 1
+// 0
+
+
+// Test Case 5: Check after remove()
+{
+    HashMap<int, int> map;
+
+    map.set(1, 100);
+    map.set(2, 200);
+
+    map.remove(1);
+
+    std::cout << map.exist(1) << std::endl;
+    std::cout << map.exist(2) << std::endl;
+}
+// Expected:
+// 0
+// 1
   return 0;
 }
