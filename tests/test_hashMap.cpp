@@ -674,94 +674,94 @@ int main(){
 //     }
 // }
 // Expected:
-// key did not exist
+// // key did not exist
 
 
 
-// =====================================================
-// ===== Method: print() ===============================
-// =====================================================
+// // =====================================================
+// // ===== Method: print() ===============================
+// // =====================================================
 
-// Test Case 1: Print an empty HashMap
-{
-    HashMap<int, int> map;
+// // Test Case 1: Print an empty HashMap
+// {
+//     HashMap<int, int> map;
 
-    map.print();
-}
-// Expected:
-// 8 buckets should be printed.
-// Every bucket should display:
-// bucketX->Empty
-//
-// Example:
-// bucket1->Empty
-// bucket2->Empty
-// ...
-// bucket8->Empty
-
-
-// Test Case 2: Print one key-value pair
-{
-    HashMap<int, int> map;
-
-    map.set(10, 100);
-
-    map.print();
-}
-// Expected:
-// One bucket contains:
-// (10,100)
-//
-// All other buckets are Empty.
+//     map.print();
+// }
+// // Expected:
+// // 8 buckets should be printed.
+// // Every bucket should display:
+// // bucketX->Empty
+// //
+// // Example:
+// // bucket1->Empty
+// // bucket2->Empty
+// // ...
+// // bucket8->Empty
 
 
-// Test Case 3: Print multiple key-value pairs
-{
-    HashMap<int, int> map;
+// // Test Case 2: Print one key-value pair
+// {
+//     HashMap<int, int> map;
 
-    map.set(1, 100);
-    map.set(2, 200);
-    map.set(3, 300);
+//     map.set(10, 100);
 
-    map.print();
-}
-// Expected:
-// The output should contain:
-// (1,100)
-// (2,200)
-// (3,300)
-//
-// Bucket positions may vary.
+//     map.print();
+// }
+// // Expected:
+// // One bucket contains:
+// // (10,100)
+// //
+// // All other buckets are Empty.
 
 
-// Test Case 4: Print after updating an existing key
-{
-    HashMap<int, int> map;
+// // Test Case 3: Print multiple key-value pairs
+// {
+//     HashMap<int, int> map;
 
-    map.set(5, 50);
-    map.set(5, 500);
+//     map.set(1, 100);
+//     map.set(2, 200);
+//     map.set(3, 300);
 
-    map.print();
-}
-// Expected:
-// Only one pair should exist:
-// (5,500)
-//
-// There should NOT be:
-// (5,50)
+//     map.print();
+// }
+// // Expected:
+// // The output should contain:
+// // (1,100)
+// // (2,200)
+// // (3,300)
+// //
+// // Bucket positions may vary.
 
 
-// Test Case 5: Print after reHash()
-{
-    HashMap<int, int> map;
+// // Test Case 4: Print after updating an existing key
+// {
+//     HashMap<int, int> map;
 
-    for (int i = 1; i <= 20; i++)
-    {
-        map.set(i, i * 10);
-    }
+//     map.set(5, 50);
+//     map.set(5, 500);
 
-    map.print();
-}
+//     map.print();
+// }
+// // Expected:
+// // Only one pair should exist:
+// // (5,500)
+// //
+// // There should NOT be:
+// // (5,50)
+
+
+// // Test Case 5: Print after reHash()
+// {
+//     HashMap<int, int> map;
+
+//     for (int i = 1; i <= 20; i++)
+//     {
+//         map.set(i, i * 10);
+//     }
+
+//     map.print();
+// }
 // Expected:
 // Capacity becomes 32 buckets.
 //
@@ -780,85 +780,166 @@ int main(){
 // ===== Method: exist() ===============================
 // =====================================================
 
-// Test Case 1: Check existing key
-{
-    HashMap<int, int> map;
+// // Test Case 1: Check existing key
+// {
+//     HashMap<int, int> map;
 
-    map.set(10, 100);
+//     map.set(10, 100);
 
-    std::cout << map.exist(10) << std::endl;
-}
-// Expected:
-// 1
+//     std::cout << map.exist(10) << std::endl;
+// }
+// // Expected:
+// // 1
 
 
-// Test Case 2: Check non-existing key
-{
-    HashMap<int, int> map;
+// // Test Case 2: Check non-existing key
+// {
+//     HashMap<int, int> map;
 
-    map.set(10, 100);
+//     map.set(10, 100);
 
-    std::cout << map.exist(20) << std::endl;
-}
+//     std::cout << map.exist(20) << std::endl;
+// }
 // Expected:
 // 0
 
 
-// Test Case 3: Check multiple keys
+// // Test Case 3: Check multiple keys
+// {
+//     HashMap<int, int> map;
+
+//     map.set(1, 100);
+//     map.set(2, 200);
+//     map.set(3, 300);
+
+//     std::cout << map.exist(1) << std::endl;
+//     std::cout << map.exist(2) << std::endl;
+//     std::cout << map.exist(3) << std::endl;
+//     std::cout << map.exist(4) << std::endl;
+// }
+// // Expected:
+// // 1
+// // 1
+// // 1
+// // 0
+
+
+// // Test Case 4: Check after reHash()
+// {
+//     HashMap<int, int> map;
+
+//     for (int i = 1; i <= 20; i++)
+//     {
+//         map.set(i, i * 100);
+//     }
+
+//     std::cout << map.exist(1) << std::endl;
+//     std::cout << map.exist(10) << std::endl;
+//     std::cout << map.exist(20) << std::endl;
+//     std::cout << map.exist(21) << std::endl;
+// }
+// // Expected:
+// // 1
+// // 1
+// // 1
+// // 0
+
+
+// // Test Case 5: Check after remove()
+// {
+//     HashMap<int, int> map;
+
+//     map.set(1, 100);
+//     map.set(2, 200);
+
+//     map.remove(1);
+
+//     std::cout << map.exist(1) << std::endl;
+//     std::cout << map.exist(2) << std::endl;
+// }
+// // Expected:
+// // 0
+// // 1
+
+// =====================================================
+// ===== Method: loadFactor() ===========================
+// =====================================================
+
+// Test Case 1: Empty HashMap
+{
+    HashMap<int, int> map;
+
+    std::cout << map.loadFactor() << std::endl;
+}
+// Expected:
+// 0
+// (or 0.0)
+
+
+// Test Case 2: One element
 {
     HashMap<int, int> map;
 
     map.set(1, 100);
-    map.set(2, 200);
-    map.set(3, 300);
 
-    std::cout << map.exist(1) << std::endl;
-    std::cout << map.exist(2) << std::endl;
-    std::cout << map.exist(3) << std::endl;
-    std::cout << map.exist(4) << std::endl;
+    std::cout << map.loadFactor() << std::endl;
 }
 // Expected:
-// 1
-// 1
-// 1
-// 0
+// 0.125
+// (1/8)
 
 
-// Test Case 4: Check after reHash()
+// Test Case 3: Four elements
 {
     HashMap<int, int> map;
 
-    for (int i = 1; i <= 20; i++)
+    map.set(1, 10);
+    map.set(2, 20);
+    map.set(3, 30);
+    map.set(4, 40);
+
+    std::cout << map.loadFactor() << std::endl;
+}
+// Expected:
+// 0.5
+// (4/8)
+
+
+// Test Case 4: Just before reHash()
+{
+    HashMap<int, int> map;
+
+    map.set(1, 10);
+    map.set(2, 20);
+    map.set(3, 30);
+    map.set(4, 40);
+    map.set(5, 50);
+    map.set(6, 60);
+
+    std::cout << map.loadFactor() << std::endl;
+}
+// Expected:
+// 0.75
+// (6/8)
+
+
+// Test Case 5: After reHash()
+{
+    HashMap<int, int> map;
+
+    for (int i = 1; i <= 7; i++)
     {
-        map.set(i, i * 100);
+        map.set(i, i * 10);
     }
 
-    std::cout << map.exist(1) << std::endl;
-    std::cout << map.exist(10) << std::endl;
-    std::cout << map.exist(20) << std::endl;
-    std::cout << map.exist(21) << std::endl;
+    std::cout << map.getCapacity() << std::endl;
+    std::cout << map.getSize() << std::endl;
+    std::cout << map.loadFactor() << std::endl;
 }
 // Expected:
-// 1
-// 1
-// 1
-// 0
-
-
-// Test Case 5: Check after remove()
-{
-    HashMap<int, int> map;
-
-    map.set(1, 100);
-    map.set(2, 200);
-
-    map.remove(1);
-
-    std::cout << map.exist(1) << std::endl;
-    std::cout << map.exist(2) << std::endl;
-}
-// Expected:
-// 0
-// 1
+// 16
+// 7
+// 0.4375
+// (7/16)
   return 0;
 }
