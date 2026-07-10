@@ -7,7 +7,7 @@
 //     return capacity;
 // }
 template <typename K, typename V>
-HashMap<K, V>::HashMap() : size(0), capacity(8), buckets(8)
+HashMap<K, V>::HashMap() : size(0), capacity(8), buckets(8),rehashCount(0),collisionCount(0)
 {
   for (int i = 0; i < capacity; i++)
   {
@@ -15,7 +15,7 @@ HashMap<K, V>::HashMap() : size(0), capacity(8), buckets(8)
   }
 }
 template <typename K, typename V>
-HashMap<K, V>::HashMap(int capacity) : size(0), capacity(validate(capacity)), buckets(capacity)
+HashMap<K, V>::HashMap(int capacity) : size(0), capacity(validate(capacity)), buckets(capacity),rehashCount(0),collisionCount(0)
 {
   for (int i = 0; i < capacity; i++)
   {
@@ -71,6 +71,7 @@ void HashMap<K, V>::reHash()
   // buckets.~DynamicArray();
   buckets = newBuckets;
   capacity = newCapacity;
+  ++rehashCount;
 }
 template <typename K, typename V>
 int HashMap<K, V>::getSize()
@@ -91,6 +92,9 @@ void HashMap<K, V>::set(const K &key, const V &value)
   // if(temp==nullptr){
   //   temp.insertFront(p);
   // }else{
+  if(temp.getSize()!=0){
+    ++collisionCount;
+  }
   int size = temp.getSize();
   // std::cout<<"LIst"<<size<<"\n";
   int i = 0;
@@ -223,4 +227,39 @@ void HashMap<K,V>::clear(){
   for(int i=0;i<capacity;i++){
     buckets.append(LinkList<Pair>());
   }
+}
+template<typename K,typename V>
+int HashMap<K,V>::getRehashCount(){
+  return rehashCount;
+}
+template<typename K,typename V>
+int HashMap<K,V>::getCollisionCount(){
+  return collisionCount;
+}
+
+template<typename K,typename V>
+int HashMap<K,V>::getLongestChain(){
+  int largest=0;
+  int size=0;
+  for(int i=0;i<capacity;i++){
+    LinkList<Pair> list=buckets.get(i);
+    size=list.getSize();
+    if(size>largest){
+      largest=size;
+    }
+  }
+  return largest;
+}
+template<typename K,typename V>
+int HashMap<K,V>::getEmptyBuckets(){
+  int emptyBuckets=0;
+  int size=0;
+  for(int i=0;i<capacity;i++){
+    LinkList<Pair> list=buckets.get(i);
+    size=list.getSize();
+    if(size==0){
+      ++emptyBuckets;
+    }
+  }
+  return emptyBuckets;
 }

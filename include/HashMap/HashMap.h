@@ -10,6 +10,8 @@ class HashMap{
   private:
     int size;
     int capacity;
+    int rehashCount;
+    int collisionCount;
     struct Pair{
       K key;
       V value;
@@ -39,6 +41,10 @@ class HashMap{
     bool exist(const K& key);
     float loadFactor();
     void clear();
+    int getRehashCount();
+    int getCollisionCount();
+    int getLongestChain();
+    int getEmptyBuckets();
 };
 
 #include "./HashMap.tpp"
